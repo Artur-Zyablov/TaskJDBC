@@ -37,7 +37,9 @@ public class Util {
     public static Connection getMySQLConnection() throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         String connectionURL = "jdbc:mysql://" + DB_HOSTNAME + ":3306/" + DB_DBNAME;
-        return DriverManager.getConnection(connectionURL, DB_USERNAME, DB_PASSWORD);
+        Connection connection = DriverManager.getConnection(connectionURL, DB_USERNAME, DB_PASSWORD);
+        connection.setAutoCommit(false);
+        return connection;
     }
 
 
