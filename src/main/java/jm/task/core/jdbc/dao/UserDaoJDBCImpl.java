@@ -26,7 +26,6 @@ public class UserDaoJDBCImpl implements UserDao {
     public void createUsersTable() {
         try {
             connection = Util.getMySQLConnection();
-            connection.setAutoCommit(false);
             statement = connection.createStatement();
             statement.execute("USE jdbc");
             statement.execute("CREATE TABLE IF NOT EXISTS users " +
@@ -34,7 +33,6 @@ public class UserDaoJDBCImpl implements UserDao {
                     "name VARCHAR(20) NOT NULL ," +
                     " lastName VARCHAR(20) NOT NULL ," +
                     " age int(3) NOT NULL)");
-            connection.commit();
             if(connection != null){
                 try{
                     connection.commit();
