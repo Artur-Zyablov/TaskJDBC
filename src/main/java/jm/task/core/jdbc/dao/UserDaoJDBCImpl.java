@@ -55,7 +55,6 @@ public class UserDaoJDBCImpl implements UserDao {
             statement = connection.createStatement();
             statement.execute("DROP TABLE users");
             System.out.println("Таблица удаленна");
-            connection.commit();
             if(connection != null){
                 try{
                     connection.commit();
@@ -81,7 +80,6 @@ public class UserDaoJDBCImpl implements UserDao {
             preparedStatement.setByte(3, age);
             preparedStatement.executeUpdate();
             System.out.println("User с именем – " + name + " добавлен в базу данных");
-            connection.commit();
             if(connection != null){
                 try{
                     connection.commit();
@@ -104,7 +102,6 @@ public class UserDaoJDBCImpl implements UserDao {
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setLong(1, id);
             preparedStatement.executeUpdate();
-            connection.commit();
             if(connection != null){
                 try{
                     connection.commit();
@@ -135,7 +132,6 @@ public class UserDaoJDBCImpl implements UserDao {
                 user.setAge(rs.getByte("age"));
                 allUsers.add(user);
             }
-            connection.commit();
             if(connection != null){
                 try{
                     connection.commit();
@@ -158,7 +154,6 @@ public class UserDaoJDBCImpl implements UserDao {
             statement = connection.createStatement();
             statement.execute("DELETE FROM users");
             System.out.println("Таблица очищена");
-            connection.commit();
             if(connection != null){
                 try{
                     connection.commit();
